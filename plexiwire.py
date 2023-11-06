@@ -1,4 +1,4 @@
-from datetime import datetime
+import time
 
 import requests
 from bs4 import BeautifulSoup
@@ -39,7 +39,7 @@ class PlexiwireSite:
             price=self.get_price(filament),
             color=self.get_color(title),
             url=f'{self.URL}{self.get_href(filament)}',
-            update_time=datetime.now(),
+            update_time=int(time.time()),
         )
 
     def get_filaments(self, url_filter: str):

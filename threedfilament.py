@@ -1,4 +1,4 @@
-from datetime import datetime
+import time
 
 import requests
 from bs4 import BeautifulSoup
@@ -48,7 +48,7 @@ class ThreeDFilamentSite:
             price=self.get_price(filament_card),
             color=self.get_color(filament_card),
             url=href,
-            update_time=datetime.now(),
+            update_time=int(time.time()),
         )
 
     def get_filaments(self, url_filter: str):
