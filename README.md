@@ -8,4 +8,4 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
--> [available_filaments.json](available_filaments.json)
+-> available_filaments.json
