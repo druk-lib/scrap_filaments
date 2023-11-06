@@ -1,75 +1,48 @@
-import time
-
 import requests
 from bs4 import BeautifulSoup
 
-from schemas import Filament, Manufacturer
+from schemas import FilamentData, ManufacturerSite
+
+URL = 'https://shop.plexiwire.com.ua'
 
 
-class PlexiwireSite:
-    HEADERS = {
-        'User-Agent': 'Mozilla/5.0',
-        'Content-Type': 'text/html',
-        'Accept': 'text/html',
-    }
-    NAME = 'Plexiwire'
-    URL = 'https://shop.plexiwire.com.ua'
-    FILTER = '/plexiwire-filament/filter/presence=1/'
+class Plexiwire(FilamentData):
     TYPES = {
         'ABS': 'ABS',
         'PETG': 'PETG',
         'PLA': 'PLA',
     }
+    GET_PAGE = False
 
-    def scrap(self):
-        available_filaments = []
-        for filament in self.get_filaments(f'{self.URL}{self.FILTER}'):
-            if created_filament := self.create_filament(filament):
-                available_filaments.append(created_filament)
+    def get_url(self):
+        return self.card.find('a').get('href')
 
-        return Manufacturer(name=self.NAME, filaments=available_filaments)
+    def get_name(self):
+        return self.card.find('div', class_='catalogCard-title').find('a').get('title')
 
-    def create_filament(self, filament):
-        title = filament.find('div', class_='catalogCard-title').find('a').get('title').split(' ')
+    def get_type(self):
+        type_site = self.get_name().split(' ')[0]
+        return self.TYPES.get(type_site) or type_site
 
-        return Filament(
-            name=self.get_name(title),
-            type=self.get_type(title),
-            weight=self.get_weight(title),
-            price=self.get_price(filament),
-            color=self.get_color(title),
-            url=f'{self.URL}{self.get_href(filament)}',
-            update_time=int(time.time()),
-        )
+    def get_weight(self):
+        return float(self.get_name().split(' ')[-3].replace('кг', ''))
 
-    def get_filaments(self, url_filter: str):
-        response = requests.get(url_filter, headers=self.HEADERS)
+    def get_diameter(self):
+        return float(self.get_name().split(' ')[1].replace('мм', ''))
+
+    def get_color(self):
+        return self.get_name().split(' ')[-6]
+
+    def get_price(self):
+        return float(self.card.find('div', class_='catalogCard-price').text.strip().split(' ')[0])
+
+
+class PlexiwireSite(ManufacturerSite):
+    NAME = 'Plexiwire'
+    FILTER = '/plexiwire-filament/filter/presence=1/'
+    FILAMENT = Plexiwire
+
+    def get_filaments(self):
+        response = requests.get(f'{URL}{self.FILTER}', headers=self.HEADERS)
 
         return BeautifulSoup(response.text, 'lxml').find_all('li', class_='catalog-grid__item') if response.status_code == 200 else []
-
-    @staticmethod
-    def get_name(title):
-        return ' '.join(title)
-
-    def get_type(self, title):
-        return self.TYPES.get(title[0]) or title[0]
-
-    @staticmethod
-    def get_weight(title):
-        return float(title[-3].replace('кг', ''))
-
-    @staticmethod
-    def get_diameter(filament):
-        return float(filament.find('a').get('title').split(' ')[1].replace('мм', ''))
-
-    @staticmethod
-    def get_color(title):
-        return title[-6]
-
-    @staticmethod
-    def get_href(filament):
-        return filament.find('a').get('href')
-
-    @staticmethod
-    def get_price(filament):
-        return float(filament.find('div', class_='catalogCard-price').text.strip().split(' ')[0])
