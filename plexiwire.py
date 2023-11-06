@@ -72,4 +72,4 @@ class PlexiwireSite:
 
     @staticmethod
     def get_price(filament):
-        return float(filament.find('div', class_='catalogCard-price').string.strip().split(' ')[0])
+        return float(filament.find('div', class_='catalogCard-price').text.strip().split(' ')[0])

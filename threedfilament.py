@@ -32,9 +32,9 @@ class ThreeDFilamentSite:
         return Manufacturer(name=self.NAME, filaments=available_filaments)
 
     def create_filament(self, filament):
-        # if filament.find('span', class_='cs-goods-data__state').string != 'В наявності':
+        # if filament.find('span', class_='cs-goods-data__state').text != 'В наявності':
         #     return False
-        if 'для 3d ручки' in filament.find('div', class_='cs-goods-title-wrap').find('a').string:
+        if 'для 3d ручки' in filament.find('div', class_='cs-goods-title-wrap').find('a').text:
             return False
 
         href = self.get_href(filament)
@@ -66,7 +66,7 @@ class ThreeDFilamentSite:
 
     @staticmethod
     def get_name(filament_card):
-        return filament_card.find('span', class_='cs-title__product').string
+        return filament_card.find('span', class_='cs-title__product').text
 
     def get_type(self, name):
         for key, value in self.TYPES.items():
@@ -78,10 +78,10 @@ class ThreeDFilamentSite:
     def get_weight(filament_card):
         info_cells = filament_card.find_all('td', class_='b-product-info__cell')
         for i, info_cell in enumerate(info_cells):
-            if info_cell.string == 'Вага':
-                return float(info_cells[i + 1].string.replace('кг', ''))
+            if info_cell.text == 'Вага':
+                return float(info_cells[i + 1].text.replace('кг', ''))
 
-        name = filament_card.find('span', class_='cs-title__product').string
+        name = filament_card.find('span', class_='cs-title__product').text
         if 'кг' in name:
             parsed_name = name.split(' ')
             if 'кг' in parsed_name:
@@ -96,15 +96,15 @@ class ThreeDFilamentSite:
     def get_diameter(filament_card):
         info_cells = filament_card.find_all('td', class_='b-product-info__cell')
         for i, info_cell in enumerate(info_cells):
-            if info_cell.string == 'Діаметр нитки':
-                return float(info_cells[i + 1].string.replace('мм', ''))
+            if info_cell.text == 'Діаметр нитки':
+                return float(info_cells[i + 1].text.replace('мм', ''))
         return 0
 
     @staticmethod
     def get_color(filament_card):
         info_cells = filament_card.find_all('td', class_='b-product-info__cell')
         for i, info_cell in enumerate(info_cells):
-            if info_cell.string == 'Колір':
+            if info_cell.text == 'Колір':
                 return filament_card.find_all("td", class_="b-product-info__cell")[i + 1].text.strip()
         return 'без кольору'
 

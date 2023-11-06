@@ -42,7 +42,7 @@ class MonofilamentSite:
                     if 'out-stock' in button.get('class'):
                         continue
 
-                    if '1,75' not in button.string:
+                    if '1,75' not in button.text:
                         continue
 
                     href = self.get_href(filament)
@@ -74,18 +74,18 @@ class MonofilamentSite:
 
     @staticmethod
     def get_name(filament_card):
-        return filament_card.find('h1').string or filament_card.find('h4').string
+        return filament_card.find('h1').text or filament_card.find('h4').text
 
     @staticmethod
     def get_weight(button):
-        return float(button.string[button.string.find('Вага:') + 5 :].replace('кг', '').replace(',', '.'))
+        return float(button.text[button.text.find('Вага:') + 5 :].replace('кг', '').replace(',', '.'))
 
     @staticmethod
     def get_diameter(button):
-        return float(button.string[1 : button.string.find('мм')].replace(',', '.'))
+        return float(button.text[1 : button.text.find('мм')].replace(',', '.'))
 
     def get_color(self, filament, type_in_name):
-        return self.get_name(filament).string.replace(type_in_name, '').strip()
+        return self.get_name(filament).text.replace(type_in_name, '').strip()
 
     @staticmethod
     def get_href(filament):
