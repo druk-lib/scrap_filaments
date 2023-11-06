@@ -2,6 +2,7 @@ import json
 
 from monofilament import MonofilamentSite
 from plexiwire import PlexiwireSite
+from pochatok import PochatokSite
 from threedfilament import ThreeDFilamentSite
 from schemas import Manufacturers
 
@@ -16,6 +17,7 @@ if __name__ == '__main__':
         # MonofilamentSite,
         PlexiwireSite,
         ThreeDFilamentSite,
+        PochatokSite,
     ]
     mans = Manufacturers()
 
