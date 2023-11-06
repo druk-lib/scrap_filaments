@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List
 
 from pydantic import BaseModel
@@ -9,6 +10,8 @@ class Filament(BaseModel):
     weight: float
     price: float
     color: str
+    url: str
+    update_time: datetime
 
 
 class Manufacturer(BaseModel):

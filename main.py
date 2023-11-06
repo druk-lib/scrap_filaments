@@ -2,12 +2,14 @@ import json
 
 from monofilament import MonofilamentSite
 from plexiwire import PlexiwireSite
+from threedfilament import ThreeDFilamentSite
 from schemas import Manufacturers
 
 if __name__ == '__main__':
     all_mans = [
-        MonofilamentSite,
+        # MonofilamentSite,
         PlexiwireSite,
+        ThreeDFilamentSite,
     ]
     mans = Manufacturers()
 
@@ -19,6 +21,7 @@ if __name__ == '__main__':
             json.dumps(
                 [item.model_dump() for item in mans.manufacturers],
                 ensure_ascii=False,
+                default=str,
                 indent=2,
             )
         )

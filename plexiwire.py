@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -37,16 +39,13 @@ class PlexiwireSite:
             price=self.get_price(filament),
             color=self.get_color(title),
             url=f'{self.URL}{self.get_href(filament)}',
+            update_time=datetime.now(),
         )
 
     def get_filaments(self, url_filter: str):
         response = requests.get(url_filter, headers=self.HEADERS)
 
         return BeautifulSoup(response.text, 'lxml').find_all('li', class_='catalog-grid__item') if response.status_code == 200 else []
-
-    def get_filament_card(self, url: str):
-        response = requests.get(url, headers=self.HEADERS)
-        return BeautifulSoup(response.text, 'lxml')
 
     @staticmethod
     def get_name(title):
