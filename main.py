@@ -5,6 +5,12 @@ from plexiwire import PlexiwireSite
 from threedfilament import ThreeDFilamentSite
 from schemas import Manufacturers
 
+f = open('config.json')
+
+data = json.load(f)
+
+f.close()
+
 if __name__ == '__main__':
     all_mans = [
         # MonofilamentSite,
@@ -16,7 +22,7 @@ if __name__ == '__main__':
     for man in all_mans:
         mans.manufacturers.append(man().scrap())
 
-    with open('available_filaments.json', 'w', encoding='utf-8') as f:
+    with open(data['result_file_path'], 'w', encoding='utf-8') as f:
         f.write(
             json.dumps(
                 [item.model_dump() for item in mans.manufacturers],
