@@ -72,7 +72,7 @@ class ThreeDFilament(FilamentData):
 
 
 class ThreeDFilamentSite(ManufacturerSite):
-    NAME = '3DFilament'
+    NAME = '3D Filament'
     FILTER = '/ua/product_list?product_items_per_page=48&presence_available=true'
     # FILTER = '/ua/g92198469-petg-copet?product_items_per_page=48'
     # FILTER = '/ua/g90448360-pla-pla-plastik?product_items_per_page=48'

@@ -10,7 +10,7 @@ class MonofilamentSite:
         'Content-Type': 'text/html',
         'Accept': 'text/html',
     }
-    NAME = 'Monofilament'
+    NAME = 'MonoFilament'
     URL = 'https://shop.plexiwire.com.ua'
     FILTER = '/plexiwire-filament/filter/presence=1/'
     TYPES = {
