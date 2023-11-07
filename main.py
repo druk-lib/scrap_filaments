@@ -1,18 +1,13 @@
 import json
 
-from monofilament import MonofilamentSite
-from plexiwire import PlexiwireSite
-from pochatok import PochatokSite
-from threedfilament import ThreeDFilamentSite
-from schemas import Manufacturers
+from app.manufactures import PlexiwireSite, PochatokSite, ThreeDFilamentSite
+from app.schemas.schemas import Manufacturers, Config
 
-f = open('config.json')
-
-data = json.load(f)
-
-f.close()
 
 if __name__ == '__main__':
+    with open('config.json') as f:
+        config = Config(**json.load(f))
+
     all_mans = [
         # MonofilamentSite,
         PlexiwireSite,
@@ -24,7 +19,7 @@ if __name__ == '__main__':
     for man in all_mans:
         mans.manufacturers.append(man().scrap())
 
-    with open(data['result_file_path'], 'w', encoding='utf-8') as f:
+    with open(config.result_file_path, 'w', encoding='utf-8') as f:
         f.write(
             json.dumps(
                 [item.model_dump() for item in mans.manufacturers],

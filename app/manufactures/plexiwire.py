@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from schemas import FilamentData, ManufacturerSite
+from ..schemas import FilamentData, ManufacturerSite
 
 URL = 'https://shop.plexiwire.com.ua'
 

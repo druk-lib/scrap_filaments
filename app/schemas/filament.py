@@ -1,18 +1,7 @@
 import time
-from typing import List
 
 import requests
 from bs4 import BeautifulSoup
-from pydantic import BaseModel
-
-
-class Filament(BaseModel):
-    type: str = 'PLA'
-    weight: float = 0.75
-    price: float = 100
-    color: str = 'no color'
-    url: str = 'url'
-    update_time: int = int(time.time())
 
 
 class FilamentData:
@@ -74,42 +63,3 @@ class FilamentData:
 
     def get_price(self):
         return 100
-
-
-class ManufacturerSite:
-    HEADERS = {
-        'User-Agent': 'Mozilla/5.0',
-        'Content-Type': 'text/html',
-        'Accept': 'text/html',
-    }
-    NAME = 'ManufacturerName'
-    URL = 'https://<url>'
-    FILTER = '/<filter for available filaments>'
-    TYPES = {
-        'PLA': 'PLA',
-    }
-    FILAMENT = FilamentData
-
-    def scrap(self):
-        available_filaments = []
-        for filament_card in self.get_filaments():
-            filament = self.FILAMENT(filament_card)
-
-            if filament.miss():
-                continue
-
-            available_filaments.append(Filament(**filament.get_dict()))
-
-        return Manufacturer(name=self.NAME, filaments=available_filaments)
-
-    def get_filaments(self):
-        return []
-
-
-class Manufacturer(BaseModel):
-    name: str
-    filaments: List[Filament] = []
-
-
-class Manufacturers(BaseModel):
-    manufacturers: List[Manufacturer] = []

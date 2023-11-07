@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from schemas import Filament, Manufacturer
+from ..schemas import FilamentData, ManufacturerSite
 
 
 class MonofilamentSite:

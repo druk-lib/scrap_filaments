@@ -1,8 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from schemas import ManufacturerSite, FilamentData
-
+from ..schemas import FilamentData, ManufacturerSite
 
 URL = 'https://pochatok-filament.uaprom.net'
 

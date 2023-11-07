@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from schemas import ManufacturerSite, FilamentData
+from ..schemas import FilamentData, ManufacturerSite
 
 URL = 'https://3dfilament.com.ua'
 
