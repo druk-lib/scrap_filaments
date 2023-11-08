@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Plexiwire",
+    "filaments": [
+      {
+        "type": "NYLON",
+        "weight": 0.28,
+        "price": 540.0,
+        "color": "чорний",
+        "url": "/nylon-filament/nylon-cf10-black-100/",
+        "update_time": 1699444269
+      }
+    ]
+  },
+  {
+    "name": "3D Filament",
+    "filaments": []
+  },
+  {
+    "name": "Pochatok filament",
+    "filaments": []
+  }
+]

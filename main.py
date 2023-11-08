@@ -1,11 +1,12 @@
 import json
+import os
 
 from app.manufactures import PlexiwireSite, PochatokSite, ThreeDFilamentSite
 from app.schemas.schemas import Manufacturers, Config
 
 
 if __name__ == '__main__':
-    with open('config.json') as f:
+    with open(os.getcwd() + '/config.json') as f:
         config = Config(**json.load(f))
 
     all_mans = [
