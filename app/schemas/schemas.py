@@ -20,7 +20,3 @@ class Manufacturer(BaseModel):
 
 class Manufacturers(BaseModel):
     manufacturers: List[Manufacturer] = []
-
-
-class Config(BaseModel):
-    result_file_path: str
