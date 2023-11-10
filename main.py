@@ -2,7 +2,7 @@ import json
 
 from loguru import logger
 
-from app.manufactures import MonofilamentSite, PlexiwireSite, PochatokSite, ThreeDFilamentSite, BozeSite, LBLSite
+from app.manufactures import MonofilamentSite, PlexiwireSite, PochatokSite, ThreeDFilamentSite, BozeSite, LBLSite, Fainyi3DSite
 from app.schemas import Manufacturers
 from app.utils import settings
 
@@ -14,6 +14,7 @@ if __name__ == '__main__':
         PochatokSite,
         BozeSite,
         LBLSite,
+        Fainyi3DSite,
     ]
     mans = Manufacturers()
 
