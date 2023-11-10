@@ -152,3 +152,4 @@ fabric.properties
 
 # SQLite db
 *.db
+/available_filaments.json
