@@ -1,10 +1,12 @@
 import json
 import os
+import random
+import time
 
 import requests
 from bs4 import BeautifulSoup
 
-from app.utils import settings
+from ..utils import settings
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0',
@@ -16,13 +18,14 @@ HEADERS = {
 class ResponseSoup:
     def __init__(self, url: str, file_name: str):
         self.url = url
-        self.file_name = f'{settings.path_debug_data}{file_name.replace("/", "_")}.html'
+        self.file_name = f'{settings.path_debug_data}{file_name.replace("/", "_").replace("?", "_")}.html'
 
     def get_response(self):
         if settings.debug and os.path.exists(self.file_name):
             with open(self.file_name) as f:
                 return BeautifulSoup(f.read(), 'lxml')
 
+        time.sleep(random.randrange(1, 4))
         response = requests.get(self.url, headers=HEADERS)
         if settings.debug:
             with open(self.file_name, 'w') as f:

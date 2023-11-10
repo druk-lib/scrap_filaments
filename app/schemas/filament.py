@@ -1,9 +1,6 @@
-import random
 import time
 
-from bs4 import BeautifulSoup
-
-from .response_soup import ResponseSoup
+from .response_request import ResponseSoup
 
 
 class FilamentData:
@@ -35,8 +32,6 @@ class FilamentData:
 
     def get_page(self):
         if self.GET_PAGE and not self.miss():
-            time.sleep(random.randrange(1, 4))
-
             return ResponseSoup(self.get_url(), self.get_name()).get_response()
 
         return None

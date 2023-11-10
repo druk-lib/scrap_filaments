@@ -3,17 +3,17 @@ import json
 from loguru import logger
 
 from app.manufactures import MonofilamentSite, PlexiwireSite, PochatokSite, ThreeDFilamentSite, BozeSite, LBLSite
-from app.schemas.schemas import Manufacturers
+from app.schemas import Manufacturers
 from app.utils import settings
 
 if __name__ == '__main__':
     all_mans = [
         MonofilamentSite,
-        # PlexiwireSite,
-        # ThreeDFilamentSite,
-        # PochatokSite,
-        # BozeSite,
-        # LBLSite,
+        PlexiwireSite,
+        ThreeDFilamentSite,
+        PochatokSite,
+        BozeSite,
+        LBLSite,
     ]
     mans = Manufacturers()
 

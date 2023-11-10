@@ -1,5 +1,4 @@
-from ..schemas import FilamentData, ManufacturerSite
-from ..schemas.response_soup import ResponseSoup
+from ..schemas import FilamentData, ManufacturerSite, ResponseSoup
 
 URL = 'https://3dfilament.com.ua'
 
@@ -72,6 +71,7 @@ class ThreeDFilament(FilamentData):
 class ThreeDFilamentSite(ManufacturerSite):
     NAME = '3DFilament'
     FILTER = '/ua/product_list?product_items_per_page=48&presence_available=true'
+    # TODO filters
     # FILTER = '/ua/g92198469-petg-copet?product_items_per_page=48'
     # FILTER = '/ua/g90448360-pla-pla-plastik?product_items_per_page=48'
     FILAMENT = ThreeDFilament

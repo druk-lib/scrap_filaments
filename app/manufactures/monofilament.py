@@ -1,8 +1,7 @@
 import random
 import time
 
-from ..schemas import FilamentData, ManufacturerSite
-from ..schemas.response_soup import ResponseSoup, ResponseJSON
+from ..schemas import FilamentData, ManufacturerSite, ResponseJSON, ResponseSoup
 
 URL = 'https://monofilament.com.ua'
 

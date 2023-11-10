@@ -1,10 +1,5 @@
-import os
-
-import requests
-
 from .filament import FilamentData
 from .schemas import Filament, Manufacturer
-from ..utils import settings
 
 
 class ManufacturerSite:

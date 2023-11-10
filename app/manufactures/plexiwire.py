@@ -1,5 +1,4 @@
-from ..schemas import FilamentData, ManufacturerSite
-from ..schemas.response_soup import ResponseSoup
+from ..schemas import FilamentData, ManufacturerSite, ResponseSoup
 
 URL = 'https://shop.plexiwire.com.ua'
 

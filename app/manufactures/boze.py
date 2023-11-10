@@ -1,5 +1,4 @@
-from ..schemas import FilamentData, ManufacturerSite
-from ..schemas.response_soup import ResponseSoup
+from ..schemas import FilamentData, ManufacturerSite, ResponseSoup
 
 URL = 'https://www.boze.com.ua'
 
@@ -11,6 +10,12 @@ class Boze(FilamentData):
         'PLA': 'PLA',
     }
     GET_PAGE = True
+
+    def miss(self):
+        if self.GET_PAGE:
+            return False
+
+        return False
 
     def get_url(self):
         return f'{URL}{self.card.find("a").get("href")}'
@@ -25,8 +30,8 @@ class Boze(FilamentData):
     def get_weight(self):
         if dimensions := self.page.find('div', class_='Dimensions'):
             for part in dimensions.find_all('div'):
-                if 'Вес' in part:
-                    return float(part.split(' ')[1].replace('KG', ''))
+                if 'Вес' in part.text:
+                    return float(part.text.split(' ')[1].replace('KG', ''))
         return 0
 
     def get_diameter(self):
@@ -48,10 +53,19 @@ class Boze(FilamentData):
 
 class BozeSite(ManufacturerSite):
     NAME = 'BOZE'
+    FILTERS = (
+        '/index.php/ru/shop/pla?limit=100',
+        '/index.php/ru/shop/pla-metalik?limit=100',
+        '/index.php/ru/shop/abs-boze?limit=100',
+    )
     FILTER = '/index.php/ru/shop'
     FILAMENT = Boze
 
     def get_filaments(self):
-        bs = ResponseSoup(f'{URL}{self.FILTER}', self.NAME).get_response()
+        cards = []
+        for filter_url in self.FILTERS:
+            bs = ResponseSoup(f'{URL}{filter_url}', filter_url.split('/')[-1]).get_response()
 
-        return bs.find_all('div', class_='product-box')
+            cards += bs.find_all('div', class_='product-box')
+
+        return cards
