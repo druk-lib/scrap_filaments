@@ -1,5 +1,5 @@
-from .schemas import Filament, Manufacturer
 from .filament import FilamentData
+from .schemas import Filament, Manufacturer
 
 
 class ManufacturerSite:

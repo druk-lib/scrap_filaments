@@ -1,26 +1,28 @@
 import json
-import os
 
-from app.manufactures import PlexiwireSite, PochatokSite, ThreeDFilamentSite
-from app.schemas.schemas import Manufacturers, Config
+from loguru import logger
 
+from app.manufactures import MonofilamentSite, PlexiwireSite, PochatokSite, ThreeDFilamentSite, BozeSite, LBLSite
+from app.schemas import Manufacturers
+from app.utils import settings
 
 if __name__ == '__main__':
-    with open(os.getcwd() + '/config.json') as f:
-        config = Config(**json.load(f))
-
     all_mans = [
-        # MonofilamentSite,
+        MonofilamentSite,
         PlexiwireSite,
         ThreeDFilamentSite,
         PochatokSite,
+        BozeSite,
+        LBLSite,
     ]
     mans = Manufacturers()
 
     for man in all_mans:
+        logger.info(f'Scrapping {man.NAME}')
+
         mans.manufacturers.append(man().scrap())
 
-    with open(config.result_file_path, 'w', encoding='utf-8') as f:
+    with open(settings.result_file_path, 'w', encoding='utf-8') as f:
         f.write(
             json.dumps(
                 [item.model_dump() for item in mans.manufacturers],
@@ -29,3 +31,4 @@ if __name__ == '__main__':
                 indent=2,
             )
         )
+        logger.info(f'Saved to {settings.result_file_path}')

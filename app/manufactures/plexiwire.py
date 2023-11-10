@@ -1,7 +1,4 @@
-import requests
-from bs4 import BeautifulSoup
-
-from ..schemas import FilamentData, ManufacturerSite
+from ..schemas import FilamentData, ManufacturerSite, ResponseSoup
 
 URL = 'https://shop.plexiwire.com.ua'
 
@@ -15,7 +12,7 @@ class Plexiwire(FilamentData):
     GET_PAGE = False
 
     def get_url(self):
-        return self.card.find('a').get('href')
+        return f'{URL}{self.card.find("a").get("href")}'
 
     def get_name(self):
         return self.card.find('div', class_='catalogCard-title').find('a').get('title')
@@ -43,6 +40,6 @@ class PlexiwireSite(ManufacturerSite):
     FILAMENT = Plexiwire
 
     def get_filaments(self):
-        response = requests.get(f'{URL}{self.FILTER}', headers=self.HEADERS)
+        bs = ResponseSoup(f'{URL}{self.FILTER}', self.NAME).get_response()
 
-        return BeautifulSoup(response.text, 'lxml').find_all('li', class_='catalog-grid__item') if response.status_code == 200 else []
+        return bs.find_all('li', class_='catalog-grid__item')

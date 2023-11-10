@@ -1,7 +1,4 @@
-import requests
-from bs4 import BeautifulSoup
-
-from ..schemas import FilamentData, ManufacturerSite
+from ..schemas import FilamentData, ManufacturerSite, ResponseSoup
 
 URL = 'https://pochatok-filament.uaprom.net'
 
@@ -39,7 +36,8 @@ class Pochatok(FilamentData):
 
     def get_color(self):
         return (
-            self.get_name().replace('PLA філамент нитка пластик для 3D друку Pochatok Filament 1,75 мм', '')
+            self.get_name()
+            .replace('PLA філамент нитка пластик для 3D друку Pochatok Filament 1,75 мм', '')
             .replace('PLA філамент нитка пластик для ЗD друку Pochatok Filament 1,75 мм', '')
             .replace('.', '')
             .strip()
@@ -59,10 +57,6 @@ class PochatokSite(ManufacturerSite):
     FILAMENT = Pochatok
 
     def get_filaments(self):
-        response = requests.get(f'{URL}{self.FILTER}', headers=self.HEADERS)
+        bs = ResponseSoup(f'{URL}{self.FILTER}', self.NAME).get_response()
 
-        return (
-            BeautifulSoup(response.text, 'lxml').find_all('li', class_='cs-product-gallery__item js-productad')
-            if response.status_code == 200
-            else []
-        )
+        return bs.find_all('li', class_='cs-product-gallery__item js-productad')

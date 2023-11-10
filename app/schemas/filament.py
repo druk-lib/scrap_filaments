@@ -1,7 +1,6 @@
 import time
 
-import requests
-from bs4 import BeautifulSoup
+from .response_request import ResponseSoup
 
 
 class FilamentData:
@@ -17,7 +16,7 @@ class FilamentData:
     }
     GET_PAGE = False
 
-    def __init__(self, card: BeautifulSoup):
+    def __init__(self, card):
         self.card = card
         self.page = self.get_page()
 
@@ -32,8 +31,8 @@ class FilamentData:
         }
 
     def get_page(self):
-        if self.GET_PAGE:
-            return BeautifulSoup(requests.get(self.get_url(), headers=self.HEADERS).text, 'lxml')
+        if self.GET_PAGE and not self.miss():
+            return ResponseSoup(self.get_url(), self.get_name()).get_response()
 
         return None
 

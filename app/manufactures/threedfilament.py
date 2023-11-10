@@ -1,7 +1,4 @@
-import requests
-from bs4 import BeautifulSoup
-
-from ..schemas import FilamentData, ManufacturerSite
+from ..schemas import FilamentData, ManufacturerSite, ResponseSoup
 
 URL = 'https://3dfilament.com.ua'
 
@@ -24,7 +21,7 @@ class ThreeDFilament(FilamentData):
         return f'{URL}{self.card.find("a", class_="cs-goods-title").get("href")}'
 
     def get_name(self):
-        return self.page.find('span', class_='cs-title__product').text
+        return self.card.find('a', class_='cs-goods-title').text
 
     def get_type(self):
         name = self.get_name()
@@ -74,15 +71,12 @@ class ThreeDFilament(FilamentData):
 class ThreeDFilamentSite(ManufacturerSite):
     NAME = '3D Filament'
     FILTER = '/ua/product_list?product_items_per_page=48&presence_available=true'
+    # TODO filters
     # FILTER = '/ua/g92198469-petg-copet?product_items_per_page=48'
     # FILTER = '/ua/g90448360-pla-pla-plastik?product_items_per_page=48'
     FILAMENT = ThreeDFilament
 
     def get_filaments(self):
-        response = requests.get(f'{URL}{self.FILTER}', headers=self.HEADERS)
+        bs = ResponseSoup(f'{URL}{self.FILTER}', self.NAME).get_response()
 
-        return (
-            BeautifulSoup(response.text, 'lxml').find_all('li', class_='cs-product-gallery__item js-productad')
-            if response.status_code == 200
-            else []
-        )
+        return bs.find_all('li', class_='cs-product-gallery__item js-productad')
