@@ -1,23 +1,23 @@
 [
   {
-    "name": "Plexiwire",
+    "name": "ФАЙНИЙ",
     "filaments": [
       {
-        "type": "NYLON",
-        "weight": 0.28,
-        "price": 540.0,
-        "color": "чорний",
-        "url": "/nylon-filament/nylon-cf10-black-100/",
-        "update_time": 1699444269
+        "type": "PETG",
+        "weight": 0.85,
+        "price": 472.0,
+        "color": "Чорний",
+        "url": "https://fainyi3d.com//ua/p1880276366-fajnij-petg-copet.html",
+        "update_time": 1699630137
+      },
+      {
+        "type": "PETG",
+        "weight": 0.85,
+        "price": 472.0,
+        "color": "Хакі",
+        "url": "https://fainyi3d.com//ua/p1880276371-fajnij-petg-copet.html",
+        "update_time": 1699630141
       }
     ]
-  },
-  {
-    "name": "3D Filament",
-    "filaments": []
-  },
-  {
-    "name": "Pochatok filament",
-    "filaments": []
   }
 ]
