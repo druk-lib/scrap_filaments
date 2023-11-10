@@ -54,7 +54,7 @@ class Monofilament(FilamentData):
 
 
 class MonofilamentSite(ManufacturerSite):
-    NAME = 'Monofilament'
+    NAME = 'MonoFilament'
     FILTERS = (
         '/ua/products/standartnye-materialy/abs/?ocf=F3S0V2F3S3V19&limit=100',
         '/ua/products/standartnye-materialy/copet/?ocf=F3S0V2F3S3V19&limit=100',
