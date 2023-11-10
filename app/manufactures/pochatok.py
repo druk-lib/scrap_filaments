@@ -52,7 +52,7 @@ class Pochatok(FilamentData):
 
 
 class PochatokSite(ManufacturerSite):
-    NAME = 'Pochatok'
+    NAME = 'Pochatok filament'
     FILTER = '/ua/g94039223-plastik-dlya-printera?product_items_per_page=48'
     FILAMENT = Pochatok
 
