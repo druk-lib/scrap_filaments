@@ -1,3 +1,6 @@
+from loguru import logger
+from requests import RequestException
+
 from ..schemas import FilamentData, ManufacturerSite, ResponseSoup
 
 URL = 'https://fainyi3d.com'
@@ -53,6 +56,10 @@ class Fainyi3DSite(ManufacturerSite):
     FILAMENT = Fainyi3D
 
     def get_filaments(self):
-        bs = ResponseSoup(f'{URL}{self.FILTER}', self.NAME).get_response()
+        try:
+            bs = ResponseSoup(f'{URL}{self.FILTER}', self.NAME).get_response()
+        except RequestException:
+            logger.info(f'{self.NAME} - {URL}{self.FILTER} - RequestException')
+            return []
 
         return bs.find_all('li', class_='cs-product-gallery__item js-productad')
