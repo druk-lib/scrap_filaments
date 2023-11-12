@@ -1,3 +1,6 @@
+from loguru import logger
+from requests import RequestException
+
 from ..schemas import FilamentData, ManufacturerSite, ResponseSoup
 
 URL = 'https://www.boze.com.ua'
@@ -64,7 +67,11 @@ class BozeSite(ManufacturerSite):
     def get_filaments(self):
         cards = []
         for filter_url in self.FILTERS:
-            bs = ResponseSoup(f'{URL}{filter_url}', filter_url.split('/')[-1]).get_response()
+            try:
+                bs = ResponseSoup(f'{URL}{filter_url}', filter_url.split('/')[-1]).get_response()
+            except RequestException:
+                logger.info(f'{self.NAME} - {URL}{filter_url} - RequestException')
+                continue
 
             cards += bs.find_all('div', class_='product-box')
 

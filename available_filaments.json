@@ -1,23 +1,6 @@
 [
   {
     "name": "ФАЙНИЙ",
-    "filaments": [
-      {
-        "type": "PETG",
-        "weight": 0.85,
-        "price": 472.0,
-        "color": "Чорний",
-        "url": "https://fainyi3d.com//ua/p1880276366-fajnij-petg-copet.html",
-        "update_time": 1699630137
-      },
-      {
-        "type": "PETG",
-        "weight": 0.85,
-        "price": 472.0,
-        "color": "Хакі",
-        "url": "https://fainyi3d.com//ua/p1880276371-fajnij-petg-copet.html",
-        "update_time": 1699630141
-      }
-    ]
+    "filaments": []
   }
 ]

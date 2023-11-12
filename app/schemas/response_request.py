@@ -5,6 +5,8 @@ import time
 
 import requests
 from bs4 import BeautifulSoup
+from loguru import logger
+from requests import RequestException
 
 from ..utils import settings
 
@@ -26,7 +28,11 @@ class ResponseSoup:
                 return BeautifulSoup(f.read(), 'lxml')
 
         time.sleep(random.randrange(1, 4))
-        response = requests.get(self.url, headers=HEADERS)
+        try:
+            response = requests.get(self.url, headers=HEADERS)
+        except RequestException as e:
+            raise RequestException
+
         if settings.debug:
             with open(self.file_name, 'w') as f:
                 f.write(response.text)

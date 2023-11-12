@@ -1,6 +1,9 @@
 import random
 import time
 
+from loguru import logger
+from requests import RequestException
+
 from ..schemas import FilamentData, ManufacturerSite, ResponseJSON, ResponseSoup
 
 URL = 'https://monofilament.com.ua'
@@ -66,7 +69,11 @@ class MonofilamentSite(ManufacturerSite):
     def get_filaments(self):
         page_ids = []
         for filter_url in self.FILTERS:
-            bs = ResponseSoup(f'{URL}{filter_url}', filter_url.split('/')[-2]).get_response()
+            try:
+                bs = ResponseSoup(f'{URL}{filter_url}', filter_url.split('/')[-2]).get_response()
+            except RequestException:
+                logger.info(f'{self.NAME} - {URL}{filter_url} - RequestException')
+                continue
 
             for card in bs.find_all('div', class_='product-thumb'):
                 buttons = card.find('div', class_='custom1').find_all('button', class_='hpm-button')
