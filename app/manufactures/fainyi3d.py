@@ -9,7 +9,6 @@ class Fainyi3D(FilamentData):
         'PETG': 'PETG',
         'PLA': 'PLA',
     }
-    GET_PAGE = True
 
     def miss(self):
         if 'Немає в наявності' in self.card.find('span', class_='cs-goods-data__state').text:

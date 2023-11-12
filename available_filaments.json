@@ -1,22 +1,198 @@
 [
   {
-    "name": "ФАЙНИЙ",
+    "name": "3dplast",
     "filaments": [
       {
-        "type": "PETG",
+        "type": "ABS",
         "weight": 0.85,
-        "price": 472.0,
-        "color": "Чорний",
-        "url": "https://fainyi3d.com//ua/p1880276366-fajnij-petg-copet.html",
-        "update_time": 1699630137
+        "price": 360.0,
+        "color": "синій",
+        "url": "https://3dplast.biz/ua/p62750230-nit-abs-abs.html",
+        "update_time": 1699645558
       },
       {
-        "type": "PETG",
+        "type": "ABS",
         "weight": 0.85,
-        "price": 472.0,
-        "color": "Хакі",
-        "url": "https://fainyi3d.com//ua/p1880276371-fajnij-petg-copet.html",
-        "update_time": 1699630141
+        "price": 340.0,
+        "color": "0,75",
+        "url": "https://3dplast.biz/ua/p316643805-inzhenernyj-abs-plastik.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "пурпуровий",
+        "url": "https://3dplast.biz/ua/p317536015-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "червоний",
+        "url": "https://3dplast.biz/ua/p317537170-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "жовтий",
+        "url": "https://3dplast.biz/ua/p317537363-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "трав'яна",
+        "url": "https://3dplast.biz/ua/p317537598-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "блакитний",
+        "url": "https://3dplast.biz/ua/p317537700-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "фіолетовий",
+        "url": "https://3dplast.biz/ua/p317537745-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "коричневий",
+        "url": "https://3dplast.biz/ua/p317537851-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "сірий",
+        "url": "https://3dplast.biz/ua/p317537893-nit-abs-plastik.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "чорний",
+        "url": "https://3dplast.biz/ua/p317537981-nit-abs-plastik.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "оранжевий",
+        "url": "https://3dplast.biz/ua/p371898308-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "безбарвний",
+        "url": "https://3dplast.biz/ua/p371901801-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "білий",
+        "url": "https://3dplast.biz/ua/p371906969-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "зелений",
+        "url": "https://3dplast.biz/ua/p373112177-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "бронзовий",
+        "url": "https://3dplast.biz/ua/p414499205-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "(телесний)",
+        "url": "https://3dplast.biz/ua/p414500357-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "бірюзовий",
+        "url": "https://3dplast.biz/ua/p470756014-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "(мілітарі)",
+        "url": "https://3dplast.biz/ua/p472800488-nit-abs-plastik.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 360.0,
+        "color": "бордовий",
+        "url": "https://3dplast.biz/ua/p508096203-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 1000.0,
+        "color": "чорний",
+        "url": "https://3dplast.biz/ua/p571682420-nit-abs-plastik.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 324.0,
+        "color": "КОЛІР",
+        "url": "https://3dplast.biz/ua/p576627106-nit-abs-plastik.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "ABS",
+        "weight": 0.85,
+        "price": 961.0,
+        "color": "2.5",
+        "url": "https://3dplast.biz/ua/p579694037-nit-abs-abs.html",
+        "update_time": 1699645558
+      },
+      {
+        "type": "PLA",
+        "weight": 0.85,
+        "price": 437.0,
+        "color": "PLA",
+        "url": "https://3dplast.biz/ua/p591502160-pla-pla-plastik.html",
+        "update_time": 1699645558
       }
     ]
   }
