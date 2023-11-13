@@ -12,7 +12,6 @@ class Plexiwire(FilamentData):
         'PETG': 'PETG',
         'PLA': 'PLA',
     }
-    GET_PAGE = False
 
     def get_url(self):
         return f'{URL}{self.card.find("a").get("href")}'

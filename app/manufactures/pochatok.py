@@ -12,7 +12,6 @@ class Pochatok(FilamentData):
         'PetG': 'PETG',
         'PLA': 'PLA',
     }
-    GET_PAGE = False
 
     def miss(self):
         if self.card.find('span', class_='cs-goods-data__state').text == 'Немає в наявності':
