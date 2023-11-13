@@ -60,5 +60,8 @@ class Fainyi3DSite(ManufacturerSite):
         except RequestException:
             logger.info(f'{self.NAME} - {URL}{self.FILTER} - RequestException')
             return []
+        except Exception as e:
+            logger.info(f'{self.NAME} - {URL}{self.FILTER} - {e}')
+            return []
 
         return bs.find_all('li', class_='cs-product-gallery__item js-productad')

@@ -72,6 +72,9 @@ class BozeSite(ManufacturerSite):
             except RequestException:
                 logger.info(f'{self.NAME} - {URL}{filter_url} - RequestException')
                 continue
+            except Exception as e:
+                logger.info(f'{self.NAME} - {URL}{self.FILTER} - {e}')
+                continue
 
             cards += bs.find_all('div', class_='product-box')
 

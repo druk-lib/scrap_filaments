@@ -11,20 +11,22 @@ from app.manufactures import (
     LBLSite,
     Fainyi3DSite,
     ThreeDPlastSite,
+    U3DFSite,
 )
 from app.schemas import Manufacturers
 from app.utils import settings
 
 if __name__ == '__main__':
     all_mans = [
-        MonofilamentSite,
         PlexiwireSite,
+        MonofilamentSite,
         ThreeDFilamentSite,
         PochatokSite,
-        BozeSite,
         LBLSite,
+        BozeSite,
         Fainyi3DSite,
         ThreeDPlastSite,
+        U3DFSite,
     ]
     mans = Manufacturers()
 

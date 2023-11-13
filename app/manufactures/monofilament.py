@@ -74,6 +74,9 @@ class MonofilamentSite(ManufacturerSite):
             except RequestException:
                 logger.info(f'{self.NAME} - {URL}{filter_url} - RequestException')
                 continue
+            except Exception as e:
+                logger.info(f'{self.NAME} - {URL}{self.FILTER} - {e}')
+                continue
 
             for card in bs.find_all('div', class_='product-thumb'):
                 buttons = card.find('div', class_='custom1').find_all('button', class_='hpm-button')

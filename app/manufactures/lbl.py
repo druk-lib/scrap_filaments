@@ -1,3 +1,6 @@
+from loguru import logger
+from requests import RequestException
+
 from ..schemas import FilamentData, ManufacturerSite, ResponseSoup
 
 URL = 'https://lbl-corp.com'
@@ -53,6 +56,13 @@ class LBLSite(ManufacturerSite):
     FILAMENT = LBL
 
     def get_filaments(self):
-        bs = ResponseSoup(f'{URL}{self.FILTER}', self.NAME).get_response()
+        try:
+            bs = ResponseSoup(f'{URL}{self.FILTER}', self.NAME).get_response()
+        except RequestException:
+            logger.info(f'{self.NAME} - {URL}{self.FILTER} - RequestException')
+            return []
+        except Exception as e:
+            logger.info(f'{self.NAME} - {URL}{self.FILTER} - {e}')
+            return []
 
         return bs.find_all('li', class_='b-product-gallery__item')
