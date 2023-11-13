@@ -17,13 +17,13 @@ from app.utils import settings
 
 if __name__ == '__main__':
     all_mans = [
-        # MonofilamentSite,
-        # PlexiwireSite,
-        # ThreeDFilamentSite,
-        # PochatokSite,
-        # BozeSite,
-        # LBLSite,
-        # Fainyi3DSite,
+        MonofilamentSite,
+        PlexiwireSite,
+        ThreeDFilamentSite,
+        PochatokSite,
+        BozeSite,
+        LBLSite,
+        Fainyi3DSite,
         ThreeDPlastSite,
     ]
     mans = Manufacturers()
