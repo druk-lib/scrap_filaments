@@ -12,6 +12,7 @@ from app.manufactures import (
     Fainyi3DSite,
     ThreeDPlastSite,
     U3DFSite,
+    DASPlastSite,
 )
 from app.schemas import Manufacturers
 from app.utils import settings
@@ -27,6 +28,7 @@ if __name__ == '__main__':
         Fainyi3DSite,
         ThreeDPlastSite,
         U3DFSite,
+        DASPlastSite,
     ]
     mans = Manufacturers()
 
