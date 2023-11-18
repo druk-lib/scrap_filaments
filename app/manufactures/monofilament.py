@@ -43,7 +43,8 @@ class Monofilament(FilamentData):
 
     def get_weight(self):
         # TODO regexp
-        return float(self.get_name().split(' ')[-1].replace('кг', '').replace('Вес:', '').replace(',', '.'))
+        weight = self.get_name().split(' ')[-1].replace('кг', '').replace('Вес:', '').replace(',', '.')
+        return weight and float(weight) or 0.1
 
     def get_diameter(self):
         name = self.get_name().split(' ')

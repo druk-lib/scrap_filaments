@@ -1,3 +1,5 @@
+from loguru import logger
+
 from .filament import FilamentData
 from .schemas import Filament, Manufacturer
 
@@ -21,10 +23,15 @@ class ManufacturerSite:
         for filament_card in self.get_filaments():
             filament = self.FILAMENT(filament_card)
 
-            if filament.miss():
-                continue
+            try:
+                if filament.miss():
+                    continue
 
-            available_filaments.append(Filament(**filament.get_dict()))
+                available_filaments.append(Filament(**filament.get_dict()))
+
+            except Exception as e:
+                logger.info(f'{self.NAME} - {e} - {filament.get_url()}')
+                continue
 
         return Manufacturer(name=self.NAME, filaments=available_filaments)
 
